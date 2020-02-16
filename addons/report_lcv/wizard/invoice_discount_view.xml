@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle
+ -->
+<odoo>
+    <record id="view_dev_invoice_discount_wizard" model="ir.ui.view">
+        <field name="name">view.dev.invoice.discount.wizard</field>
+        <field name="model">invoice.discount.wizard</field>
+        <field name="arch" type="xml">
+        <form string="Libro de Ventas IVA">
+            <group>
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                <group>
+                    <field name="state"/>
+                    <field name="inv_type"/>
+                </group>
+            </group>
+            <footer>
+    	 		<button name="generate_excel" string="LCV Excel" type="object" class="oe_highlight"/>
+	        	   or
+            	<button string="Cancel" class="oe_link" special="cancel" />
+            </footer>
+        </form>
+        </field>
+    </record>
+     <record id="action_invoice_discount_report" model="ir.actions.act_window">
+        <field name="name">Libro de Ventas IVA</field>
+        <field name="res_model">invoice.discount.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_dev_invoice_discount_wizard"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_invoice_discount_excel" name="Libro de Ventas IVA" parent="account.menu_finance_reports" sequence="1" action="action_invoice_discount_report"/>
+</odoo>
